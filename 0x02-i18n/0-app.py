@@ -1,27 +1,20 @@
 #!/usr/bin/env python3
-
 """
-A basic Flask Application
-with a single route
-and an index.html template for internationalization (i18n).
-
+Flask app
 """
-
 from flask import Flask, render_template
+
 
 app = Flask(__name__)
 
 
-@app.route('/')
-def index():
+@app.route('/', strict_slashes=False)
+def index() -> str:
     """
-    Render the 0-index.html template
-
-    Return:The rendered HTML content from the 0-index.html template.
+    Handles / route
     """
-
-    return render_tamplate("0-index.html")
+    return render_template('0-index.html')
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port="5000", host="0.0.0.0", debug=True)
